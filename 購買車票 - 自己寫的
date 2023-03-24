@@ -10,7 +10,7 @@ public class Test1 {
         int month = sc.nextInt();
         System.out.println("請輸入艙別");
         String level = sc.next();
-        System.out.println("請輸入搭乘車票價格");
+        System.out.println("請輸入票價");
         double price = sc.nextInt();
 
         if (month >= 5 && month < 11) {
