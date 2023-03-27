@@ -1,0 +1,27 @@
+package com.itheima.test;
+
+public class Test2 {
+    public static void main(String[] args) {
+//        判斷101-200之間有多少個質數，並輸出所有的結果
+
+        int t = 0;
+        for (int s = 101; s <= 200; s++) { //1. 初次循環打印出101-200的數字
+            boolean flag = true; //4.標記思想 預設為真true(質數)
+
+            for (int a = 2; a == s - 1; a++) { //2.第二層循環用來建立從"2"開始至初次循環-1的範圍
+                if (s % a == 0) { //3.進行判斷，若s可以被a所整除，
+                    flag = false; //5.布林修改為假false
+                    break; //6.結束當前循環，轉移至下面的代碼繼續執行
+                }
+            }
+            if (flag) {
+                System.out.println(s + "是質數");
+                t = t + 1;
+            } /*else {
+                System.out.println(s + "不是質數");
+            }*/
+        }
+        System.out.println("共計" + t + "個質數");
+
+    }
+}
