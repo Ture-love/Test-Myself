@@ -1,0 +1,44 @@
+package com.itheima.test;
+
+import java.util.Random;
+
+public class Test5 {
+    public static void main(String[] args) {
+        /*有6名評委給選手打分數，分數範圍為0-100分的整數。
+        最後得分為，去掉最高分以及最低分數後，剩餘4名的分數進行平均，即為最終得分。*/
+
+        int[] arry1 = new int[6];
+        Random r = new Random();
+        int sum = 0;
+
+        for (int i = 0; i < arry1.length; i++) {
+            int score = r.nextInt(101);
+            arry1[i] = score;
+            System.out.print("隨機分數為" + arry1[i] + " ");
+        }
+
+        int max = arry1[0]; //定義最大值的初始
+
+        for (int i = 0; i < arry1.length; i++) {
+            if (arry1[i] > max) {
+                max = arry1[i];
+            }
+        }
+        int min = arry1[0]; //定義最小值的初始
+
+        for (int i = 0; i < arry1.length; i++) {
+            if (arry1[i] < min) {
+                min = arry1[i];
+            }
+        }
+        System.out.println(" ");
+        System.out.println("最大值為：" + max);
+        System.out.println("最小值為：" + min);
+
+        for (int i = 0; i < arry1.length; i++) {
+            sum = sum + arry1[i];
+        }
+        System.out.println(" ");
+        System.out.println("總分為：" + (sum - max - min) / arry1.length);
+    }
+}
