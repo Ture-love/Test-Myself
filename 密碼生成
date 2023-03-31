@@ -1,0 +1,92 @@
+package com.itheima.test;
+
+import java.util.Random;
+
+public class Test6 {
+    public static void main(String[] args) {
+//        先得到四位數，然後每位數加上5後，再對10求餘數(%)，最後進行反轉，再拼接生成五位數的新密碼
+        //生成長度為5的數組
+        int[] result = getNumber();
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i] + " ");
+        }
+        System.out.println(" "); //換行
+        //針對數組進行每個元素都加5
+        int[] sumarry = getSumArry(result);
+        for (int i = 0; i < sumarry.length; i++) {
+            System.out.print(sumarry[i] + " ");
+        }
+        System.out.println(" "); //換行
+        //對10取餘
+        int[] divisionarry = getDivision(sumarry);
+        for (int i = 0; i < divisionarry.length; i++) {
+            System.out.print(divisionarry[i] + " ");
+        }
+        System.out.println(" "); //換行
+        //反轉
+        int[] max = getReverse(divisionarry);
+        for (int i = 0; i < max.length; i++) {
+            System.out.print(max[i] + " ");
+        }
+        System.out.println(" "); //換行
+        //拼接
+        String over = getPassword(max);
+        System.out.println("最後密碼" + over);
+    }
+
+    //    類別中方法外
+
+
+    //(一)獲取一個數組長度的隨機陣列
+    //需要做什麼? > 隨機取得一四位數
+    //需要什麼來完成? > 暫無
+    //是否需要回傳? > 需要
+    public static int[] getNumber() {
+        int[] arry = new int[5];
+        Random r = new Random();
+
+        for (int i = 0; i < arry.length; i++) {
+            int index = r.nextInt(10) + 1; //範圍1-10
+            arry[i] = index;
+        }
+        return arry;
+    }
+
+    //(二)進行隨機陣列的每個元素都加上5
+    public static int[] getSumArry(int[] result) {
+        for (int i = 0; i < result.length; i++) {
+            result[i] = result[i] + 5;
+        }
+        return result;
+    }
+
+    //(三)進行隨機陣列的每個元素都對10取餘數
+    public static int[] getDivision(int[] sumarry) {
+        for (int i = 0; i < sumarry.length; i++) {
+            sumarry[i] = sumarry[i] % 10;
+        }
+        return sumarry;
+    }
+
+    //(四)進行反轉
+    public static int[] getReverse(int[] divisionarry) {
+        int temp = 0;
+        //初始化結束指針長度沒有-1、初始化開始定義值錯誤(需要為0)
+        for (int s = 0, e = divisionarry.length - 1; s < e; s++, e--) {
+            temp = divisionarry[s];
+            divisionarry[s] = divisionarry[e];
+            divisionarry[e] = temp;
+        }
+        return divisionarry;
+    }
+
+    //(五)進行拼接
+    public static String getPassword(int[] max) {
+        String s = "";
+        for (int i = 0; i < max.length; i++) {
+            s = s + max[i];
+        }
+        return s;
+    }
+
+}
